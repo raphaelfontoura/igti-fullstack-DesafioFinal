@@ -26,7 +26,22 @@ const save = async (data) => {
     }
 }
 
+const update = async (data) => {
+    const transaction = await TransactionModel.findById(data._id);
+    if (transaction === null) {
+        throw new Error("Falha ao localizar o documento para update.");
+    }
+    data.type = transaction.type;
+    try {
+        await TransactionModel.updateOne({_id:transaction._id}, data);
+        return data;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 module.exports = {
     findAll,
     save,
+    update,
 };

@@ -11,7 +11,7 @@ transactionRouter.get('/', async (req, res) => {
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
-})
+});
 
 transactionRouter.post('/', async (req, res) => {
     const data = req.body;
@@ -21,6 +21,16 @@ transactionRouter.post('/', async (req, res) => {
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
-})
+});
+
+transactionRouter.put('/', async (req, res) => {
+    const data = req.body;
+    try {
+        const updateTransaction = await transaction.update(data);
+        res.send(updateTransaction);
+    } catch (error) {
+        res.status(500).send({ message: error.message });
+    }
+});
 
 module.exports = transactionRouter;
