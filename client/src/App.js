@@ -77,8 +77,6 @@ export default function App() {
       handleModalClose();
       newTransactions = transactions.filter(t => t._id !== data._id);
       newTransactions = [...newTransactions, data];
-      console.log(newTransactions);
-      console.log(editFilter);
       setTransactions(newTransactions);
     }
   }
@@ -107,8 +105,8 @@ export default function App() {
 
   return (
     <div className="container">
-      <h1 className="center">Desafio Final do Bootcamp Full Stack </h1>
-      <Select period={period} handleChange={handleSelectChange} allPeriods={periods} />
+      <h2 className="center">Desafio Final do Bootcamp Full Stack </h2>
+      {periods && <Select period={period} handleChange={handleSelectChange} allPeriods={periods} />}
       {filteredTransactions && <Summary filteredTransactions={filteredTransactions} />}
 
       <button style={styles.button} onClick={handleButtonClick} className="btn">Novo lançamento</button>
