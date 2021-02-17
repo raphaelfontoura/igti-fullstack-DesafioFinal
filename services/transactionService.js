@@ -40,8 +40,32 @@ const update = async (data) => {
     }
 }
 
+const remove = async (id) => {
+    const transaction = await TransactionModel.findById(id);
+    if (transaction === null) {
+        throw new Error("O ID informado não foi encontrado na base de dados");
+    }
+    try {
+        const deleted = await TransactionModel.deleteOne({_id: id});
+        return deleted.deletedCount;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+const getPeriods = async () => {
+    try {
+        const periods = await TransactionModel.distinct("yearMonth");
+        return periods;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 module.exports = {
     findAll,
     save,
     update,
+    remove,
+    getPeriods,
 };
