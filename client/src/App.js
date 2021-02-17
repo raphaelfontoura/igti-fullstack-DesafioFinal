@@ -106,7 +106,9 @@ export default function App() {
   return (
     <div className="container">
       <h2 className="center">Desafio Final do Bootcamp Full Stack </h2>
+
       {periods && <Select period={period} handleChange={handleSelectChange} allPeriods={periods} />}
+      
       {filteredTransactions && <Summary filteredTransactions={filteredTransactions} />}
 
       <button style={styles.button} onClick={handleButtonClick} className="btn">Novo lançamento</button>
