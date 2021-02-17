@@ -8,7 +8,6 @@ export default function InputFilter({onChange, value}) {
 
     return (
         <div>
-            <label htmlFor="filteredInput">Filtro da descrição</label>
             <input 
                 key="filteredInput" 
                 placeholder="Filtre pela descrição" 

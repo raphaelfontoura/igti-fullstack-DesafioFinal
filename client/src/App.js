@@ -7,6 +7,7 @@ import Summary from './components/Summary';
 import InputFilter from './components/InputFilter';
 import ModalTransaction from './components/ModalTransaction';
 import { periodNow } from './helpers/DateHelper';
+import Preload from './components/Preload';
 
 
 export default function App() {
@@ -104,11 +105,13 @@ export default function App() {
 
 
   return (
-    <div className="container">
+    <div className="container" >
       <h2 className="center">Desafio Final do Bootcamp Full Stack </h2>
 
-      {periods && <Select period={period} handleChange={handleSelectChange} allPeriods={periods} />}
-      
+      {!transactions && <Preload />}
+
+      <Select period={period} handleChange={handleSelectChange} allPeriods={periods} />
+
       {filteredTransactions && <Summary filteredTransactions={filteredTransactions} />}
 
       <button style={styles.button} onClick={handleButtonClick} className="btn">Novo lançamento</button>
@@ -116,7 +119,8 @@ export default function App() {
       <InputFilter style={styles.input} onChange={handleInputChange} value={editFilter} />
 
       {/* table */}
-      {filteredTransactions && <Table onDelete={handleDeleteData} onPersist={handleEditData}>{filteredTransactions.sort( (a,b) => a.day - b.day)}</Table>}
+      {filteredTransactions && <Table onDelete={handleDeleteData} onPersist={handleEditData}>{filteredTransactions.sort((a, b) => a.day - b.day)}</Table>}
+
 
       {isModalOpen && (
         <ModalTransaction

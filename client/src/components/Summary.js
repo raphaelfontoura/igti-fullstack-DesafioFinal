@@ -14,7 +14,7 @@ export default function Summary({filteredTransactions}) {
 
     return (
         <div className="card">
-            <p style={styles.title}>Sumário</p>
+            <label><h6 style={styles.title}>Sumário</h6></label>
             <ul style={styles.flexDiv}>
                 <li>Laçamentos: {size}</li>
                 <li>Receitas: R$ {income.toFixed(2)}</li>
@@ -33,7 +33,6 @@ const styles = {
 
     },
     title: {
-        fontWeight: 'bold',
         textAlign: 'center',
         paddingTop: '10px'
     }
