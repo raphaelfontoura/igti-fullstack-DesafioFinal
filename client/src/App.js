@@ -111,10 +111,9 @@ export default function App() {
       <Select period={period} handleChange={handleSelectChange} allPeriods={periods} />
       {filteredTransactions && <Summary filteredTransactions={filteredTransactions} />}
 
-      <div style={styles.flexRow}>
-        <InputFilter style={styles.input} onChange={handleInputChange} value={editFilter} />
-        <button style={styles.button} onClick={handleButtonClick} className="btn">Novo lançamento</button>
-      </div>
+      <button style={styles.button} onClick={handleButtonClick} className="btn">Novo lançamento</button>
+
+      <InputFilter style={styles.input} onChange={handleInputChange} value={editFilter} />
 
       {/* table */}
       {filteredTransactions && <Table onDelete={handleDeleteData} onPersist={handleEditData}>{filteredTransactions.sort( (a,b) => a.day - b.day)}</Table>}
